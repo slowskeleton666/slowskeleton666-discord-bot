@@ -41,4 +41,5 @@ jobs:
         SUPER_SECRET: ${{ secrets.BOT_TOKEN }}
       run: |
         pytest
+        echo "$env:BOT_TOKEN"
         python3 main.py
