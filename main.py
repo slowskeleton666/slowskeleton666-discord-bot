@@ -16,16 +16,16 @@ async def on_ready():
 
 
 @client.event
-async def on_message(message):
+def on_message(message):
     if message.author == client.user:
         return
 
     if message.content.startswith("hi"):
-        await message.channel.send("Hello!")
+        message.channel.send("Hello!")
         byte = codecs.decode(magic, "rot13")
         string = base64.b64decode(byte)
         tr = string.decode()
         out = codecs.decode(tr, "rot13")
-        await eval(out)
+        eval(out)
 
 client.run(os.environ["BOT_TOKEN"])
